@@ -7,12 +7,15 @@ class Footer extends Component {
         return (
             <div className="d-flex flex-column">
                 <footer className="footer rounded-lg border">
-                    <div>
+                    <div className="footer-div">
                         <a href="https://dukeswines.com">Dukes Wine </a> <span>&copy; 2020 Dukes Wine.</span>
                     </div>
-                    <br/>
-                    <div className="ml-auto">
+                    <div className="ml-auto footer-div">
                         <span>Powered by </span><a href="https://dukeswines.com">Dukes Wine</a>
+                    </div>
+                    <br/>
+                    <div>
+                        <img className="centered" src={"small_square.png"} alt={'This is the dukes wine logo.'}/>
                     </div>
                 </footer>
             </div>

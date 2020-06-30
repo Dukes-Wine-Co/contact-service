@@ -9,22 +9,22 @@ class Header extends Component{
             <div className="Header">
                 <Nav justify variant="tabs" defaultActiveKey="/">
                     <Nav.Item>
-                        <Nav.Link><Link to="/">Home</Link></Nav.Link>
+                        <Nav.Link eventKey="home" href="/">Home</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="events"><Link to="/event">Events</Link></Nav.Link>
+                        <Nav.Link eventKey="events" href="/event">Events</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="event-attendee"><Link to="/event-attendee">Event Attendees</Link></Nav.Link>
+                        <Nav.Link eventKey="event-attendee" href="/event-attendee">Event Attendees</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="person"><Link to="/person">Person</Link></Nav.Link>
+                        <Nav.Link eventKey="person" href="/person">Person</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="address"><Link to="/address">Address</Link></Nav.Link>
+                        <Nav.Link eventKey="address" href="/address">Address</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="bulk-submission"><Link to="/bulk-submission">Bulk Submission</Link></Nav.Link>
+                        <Nav.Link eventKey="bulk-submission" href="/bulk-submission">Bulk Submission</Nav.Link>
                     </Nav.Item>
                 </Nav>
             </div>

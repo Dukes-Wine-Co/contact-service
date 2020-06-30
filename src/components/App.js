@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { hot } from 'react-hot-loader';
+import { hot, setConfig } from 'react-hot-loader';
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './static/Header';
@@ -7,10 +7,15 @@ import RouteTree from '../routes/RouteTree';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Footer from './static/Footer';
 
+setConfig({
+    showReactDomPatchNotification: false
+})
+
 class App extends Component {
     render() {
         return (
             <Router>
+                <link rel="shortcut icon" href="small_square.png"/>
                 <link
                     rel="stylesheet"
                     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
