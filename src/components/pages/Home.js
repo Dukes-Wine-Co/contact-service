@@ -5,7 +5,7 @@ class App extends Component{
     render(){
         return(
             <div className="Home">
-                <h1> Home </h1>
+                <h1> Submission for {this.props.title} </h1>
             </div>
         );
     }
