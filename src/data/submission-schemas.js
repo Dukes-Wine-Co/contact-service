@@ -1,0 +1,27 @@
+const addressFormArr = [
+    {keyName: 'state', label: 'State'},
+    {keyName: 'city', label: 'City'},
+    {keyName: 'zipCode', label: 'Zip Code'},
+    {keyName: 'addressLine1', label: 'Address Line 1'},
+    {keyName: 'addressLine2', label: 'Address Line 2'}
+]
+
+const personFormArr = [
+    {keyName: 'firstName', label: 'First Name'},
+    {keyName: 'lastName', label: 'Last Name'},
+    {keyName: 'phoneNumber', label: 'Phone Number', type: 'tel'},
+    {keyName: 'email', label: 'Email', type: 'email'}
+]
+
+const eventFormInfo = [
+    {keyName: 'title', label: 'Event Title'},
+    {keyName: 'eventDate', label: 'Event Date', type: 'date'},
+    {keyName: 'time', label: 'Event Time', type: 'time'},
+
+]
+
+export {
+    addressFormArr,
+    personFormArr,
+    eventFormInfo
+}

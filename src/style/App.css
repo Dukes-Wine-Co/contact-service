@@ -9,6 +9,15 @@ h1 {
     padding: 5px;
 }
 
+h2 {
+    text-align:center;
+    padding: 5px;
+}
+
+.app-txt {
+    padding: 5px;
+}
+
 .centered {
     display: block;
     margin: 0 auto;

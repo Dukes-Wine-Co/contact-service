@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
+import FormSubmissionButton from '../static/FormSubmissionButton';
 
 class BulkForm extends Component {
     constructor(props) {
@@ -10,20 +10,18 @@ class BulkForm extends Component {
         this.state = {
             submissionType: 'Text',
             bulkValue: '',
-            submissionDataType: ''
+            submissionDataType: null
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange = e => {
+    handleChange(e) {
         this.setState({ [e.target.name]: e.target.value })
-        console.log(this.state)
     }
 
     handleSubmit(event) {
-        alert('An essay was submitted: ' + this.state);
         event.preventDefault();
     }
 
@@ -36,7 +34,7 @@ class BulkForm extends Component {
         ]
 
         const submissionOptions = bulkSubmissionDataTypes.map(type => {
-            return <option value={type} key={type} name="submissionDataType">{type}</option>
+            return <option value={type} key={type}>{type}</option>
         })
 
         const submissionTypes = ['File', 'Text'].map((type, ind) => {
@@ -51,20 +49,24 @@ class BulkForm extends Component {
             />
         });
 
-        const submissionToRender = this.state.submissionType === 'Text' ?
-            <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Bulk Submission Area</Form.Label>
-                <Form.Control as="textarea" rows="8" value={this.state.bulkValue} name="bulkValue" onChange={this.handleChange}/>
-            </Form.Group> :
-            <Form.Group>
-                <Form.File id="exampleFormControlFile1" label="Example file input"/>
-            </Form.Group>;
+        const textAreaElement = <Form.Group controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Bulk Submission Area</Form.Label>
+            <Form.Control as="textarea" rows="8" value={this.state.bulkValue} name="bulkValue" onChange={this.handleChange}/>
+        </Form.Group>;
+
+        const fileInputElement = <Form.Group>
+            <Form.File id="exampleFormControlFile1" label="File input (supported file types: .csv)"/>
+        </Form.Group>
+
+        const submissionToRender = (!!this.state.submissionType) ?
+            (this.state.submissionType === 'Text' ? textAreaElement : fileInputElement) :
+            null;
 
         return (
             <Form onSubmit={this.handleSubmit}>
                 <Form.Group controlId="exampleForm.ControlSelect1" onChange={this.handleChange}>
                     <Form.Label>Submission Data Type</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control as="select" name="submissionDataType">
                         {submissionOptions}
                     </Form.Control>
                 </Form.Group>
@@ -76,11 +78,7 @@ class BulkForm extends Component {
 
                 {submissionToRender}
 
-                <div className="text-center">
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
-                </div>
+                <FormSubmissionButton/>
             </Form>
         );
     }
