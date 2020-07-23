@@ -16,7 +16,8 @@ const personFormArr = [
 const eventFormInfo = [
     {keyName: 'title', label: 'Event Title'},
     {keyName: 'eventDate', label: 'Event Date', type: 'date'},
-    {keyName: 'time', label: 'Event Time', type: 'time'},
+    {keyName: 'startTime', label: 'Start Time', type: 'time'},
+    {keyName: 'endTime', label: 'End Time', type: 'time'},
 
 ]
 
