@@ -10,6 +10,16 @@ class EventAttendee extends BaseComponent {
     constructor(props) {
         super(props);
         this.state = {};
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(e) {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
     }
 
     render() {
@@ -18,7 +28,7 @@ class EventAttendee extends BaseComponent {
         return (
             <div className="EventAttendee">
                 <h1>{this.props.title} Submission</h1>
-                <Form>
+                <Form onSubmit={this.handleSubmit}>
                     {formComponent}
                     <FormSubmissionButton/>
                 </Form>

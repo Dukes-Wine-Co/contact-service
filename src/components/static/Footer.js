@@ -11,11 +11,11 @@ class Footer extends Component {
                         <a href="https://dukeswines.com">Dukes Wine </a> <span>&copy; 2020 Dukes Wine.</span>
                     </div>
                     <div className="ml-auto footer-div">
-                        <span>Powered by </span><a href="https://dukeswines.com">Dukes Wine</a>
+                        <span>Powered by </span><a href="https://github.com/Dukes-Wine-Co/contact-frontend">Dukes Wine Engineering</a>
                     </div>
                     <br/>
                     <div>
-                        <img className="centered" src={"small_square.png"} alt={'This is the dukes wine logo.'}/>
+                        <img className="centered" src={'small_square.png'} alt={'This is the dukes wine logo.'}/>
                     </div>
                 </footer>
             </div>

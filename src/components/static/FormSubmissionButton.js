@@ -1,12 +1,16 @@
-import React, { Component } from "react";
-import {hot} from 'react-hot-loader';
+import React, { Component } from 'react';
+import { hot } from 'react-hot-loader';
 import { Button } from 'react-bootstrap';
 
 class FormSubmissionButton extends Component {
-    render(){
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
         return (
             <div className="text-center">
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" onClick={this.props.handleSubmit}>
                     Submit
                 </Button>
             </div>

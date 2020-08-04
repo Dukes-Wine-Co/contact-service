@@ -11,12 +11,11 @@ class BaseComponent extends Component {
     }
 
     handleChange(e) {
-        this.setState({ [e.target.name]: e.target.value })
-        console.log(e)
+        this.setState({[e.target.name]: e.target.value})
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
+    handleSubmit(e) {
+        e.preventDefault();
     }
 }
 

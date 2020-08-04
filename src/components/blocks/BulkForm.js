@@ -18,7 +18,7 @@ class BulkForm extends Component {
     }
 
     handleChange(e) {
-        this.setState({ [e.target.name]: e.target.value })
+        this.setState({[e.target.name]: e.target.value})
     }
 
     handleSubmit(event) {
@@ -51,7 +51,8 @@ class BulkForm extends Component {
 
         const textAreaElement = <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Bulk Submission Area</Form.Label>
-            <Form.Control as="textarea" rows="8" value={this.state.bulkValue} name="bulkValue" onChange={this.handleChange}/>
+            <Form.Control as="textarea" rows="8" value={this.state.bulkValue} name="bulkValue"
+                          onChange={this.handleChange}/>
         </Form.Group>;
 
         const fileInputElement = <Form.Group>

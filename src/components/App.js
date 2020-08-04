@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { hot, setConfig } from 'react-hot-loader';
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './static/Header';
 import RouteTree from '../routes/RouteTree';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Footer from './static/Footer';
+import CollapsibleHeader from './static/CollapsibleHeader';
 
 setConfig({
     showReactDomPatchNotification: false
@@ -23,7 +23,7 @@ class App extends Component {
                     crossOrigin="anonymous"
                 />
                 <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css"/>
-                <Header/>
+                <CollapsibleHeader/>
                 <RouteTree/>
                 <Footer/>
             </Router>

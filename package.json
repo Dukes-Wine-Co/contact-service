@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "DWC Engineering Team",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.10.3",

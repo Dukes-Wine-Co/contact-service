@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Home from '../components/pages/Home';
 import EventAttendee from '../components/pages/EventAttendee';
 import Event from '../components/pages/Event';
-import Address from '../components/pages/Address';
+import Address from '../components/blocks/Address';
 import Person from '../components/pages/Person';
 import BulkSubmission from '../components/pages/BulkSubmission';
 
@@ -13,22 +13,22 @@ class RouteTree extends Component{
         return(
             <div className="RouteTree">
                 <Switch>
-                    <Route path="/bulk-submission">
+                    <Route path="/bulk-submission" key='bulk-submission'>
                         <BulkSubmission title="Bulk Submission" />
                     </Route>
-                    <Route path="/event-attendee">
+                    <Route path="/event-attendee" key='event-attendee'>
                         <EventAttendee title="Event Attendee"/>
                     </Route>
-                    <Route path="/event">
+                    <Route path="/event" key='event'>
                         <Event title="Event"/>
                     </Route>
-                    <Route path="/address">
+                    <Route path="/address" key='address'>
                         <Address title="Address"/>
                     </Route>
-                    <Route path="/person" >
+                    <Route path="/person" key='person'>
                         <Person title="Person"/>
                     </Route>
-                    <Route path="/">
+                    <Route path="/" key='home'>
                         <Home title="Home"/>
                     </Route>
                 </Switch>

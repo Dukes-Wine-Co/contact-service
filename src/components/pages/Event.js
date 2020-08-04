@@ -1,21 +1,31 @@
-import React  from "react";
-import {hot} from 'react-hot-loader';
+import React from 'react';
+import { hot } from 'react-hot-loader';
 import BaseComponent from '../static/BaseComponent';
 import FormSubmissionButton from '../static/FormSubmissionButton';
-import { eventFormInfo, personFormArr } from '../../data/submission-schemas';
+import { addressFormArr, eventFormInfo } from '../../data/submission-schemas';
 import { createFormComponent } from '../../helpers/methods';
+import { Form } from 'react-bootstrap';
 
 class Event extends BaseComponent {
     constructor(props) {
         super(props);
-        this.state = {
-        };
+        this.state = {};
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    render(){
+    handleChange(e) {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+    }
+
+    render() {
         const submissionTypes = [
-            {type: 'Event Info', data: personFormArr},
-            {type: 'Address', data: eventFormInfo}
+            {type: 'Event Info', data: eventFormInfo},
+            {type: 'Address', data: addressFormArr}
         ]
 
         const formComponent = submissionTypes
@@ -28,11 +38,13 @@ class Event extends BaseComponent {
                 )
             })
 
-        return(
+        return (
             <div className="Event">
                 <h1>{this.props.title} Submission</h1>
-                {formComponent}
-                <FormSubmissionButton/>
+                <Form onSubmit={this.handleSubmit}>
+                    {formComponent}
+                    <FormSubmissionButton/>
+                </Form>
             </div>
         );
     }
