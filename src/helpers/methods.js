@@ -4,8 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 
 const createSelectElement = (entry, handleChangeMethod, state) => {
     const selectMap = entry.data.map(selectDatum => {
-        return <option key={selectDatum.abbreviation}>{selectDatum.abbreviation}</option>
-    })
+        return <option key={selectDatum.abbreviation}>{selectDatum.abbreviation}</option>;
+    });
 
     return (
         <Form.Group controlId={'addressForm-' + entry.keyName} key={entry.keyName}>
@@ -14,8 +14,8 @@ const createSelectElement = (entry, handleChangeMethod, state) => {
                 {selectMap}
             </Form.Control>
         </Form.Group>
-    )
-}
+    );
+};
 const createFormElement = (entry, handleChangeMethod, state) => {
     return (
         <Form.Group controlId={'addressForm-' + entry.keyName} key={entry.keyName}>
@@ -24,23 +24,23 @@ const createFormElement = (entry, handleChangeMethod, state) => {
                           onChange={handleChangeMethod} value={state[entry.keyName]}/>
         </Form.Group>
     );
-}
+};
 
 const createFormComponent = (formArr, handleChangeMethod, state) => {
     return formArr.map(entry => {
-        return (entry.type === 'select')
+        return entry.type === 'select'
             ? createSelectElement(entry, handleChangeMethod, state)
             : createFormElement(entry, handleChangeMethod, state);
-    })
-}
+    });
+};
 
 const createNavLinks = linkArr => {
     return linkArr.map(entry => {
         return (
             <Nav.Link eventKey={entry.key} key={entry.key} href={entry.link}>{entry.name}</Nav.Link>
-        )
-    })
-}
+        );
+    });
+};
 
 export {
     createFormComponent,
