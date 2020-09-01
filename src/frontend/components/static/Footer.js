@@ -15,7 +15,7 @@ class Footer extends Component {
                     </div>
                     <br/>
                     <div>
-                        <img className="centered" src={'small_square.png'} alt={'This is the dukes wine logo.'}/>
+                        <img className="centered" src={'/small_square.png'} alt={'This is the dukes wine logo.'}/>
                     </div>
                 </footer>
             </div>

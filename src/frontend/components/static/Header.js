@@ -6,7 +6,7 @@ class Header extends Component {
     render() {
         return (
             <div className="Header">
-                <Nav justify variant="tabs" defaultActiveKey="/">
+                <Nav justify fill variant="tabs" defaultActiveKey="/">
                     <Nav.Item>
                         <Nav.Link eventKey="home" href="/">Home</Nav.Link>
                     </Nav.Item>

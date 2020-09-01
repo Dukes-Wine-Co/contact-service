@@ -10,7 +10,7 @@
   },
   "scripts": {
     "audit": "npm audit --audit-level=high --registry=https://registry.npmjs.org",
-    "dev": "npm run dev:server & (npm run dev:client && npm run dev:webpack-server) &",
+    "dev": "npm run dev:server & (npm run dev:client && npm run dev:webpack-server) && fg",
     "dev:client": "webpack --mode development",
     "dev:webpack-server": "webpack-dev-server --mode development",
     "dev:server": "source env.sh; NODE_ENV=development DEBUG=express:* nodemon src/backend/index.js",
@@ -40,8 +40,10 @@
   },
   "dependencies": {
     "@dukes-wine/js-log-library": "^1.0.3",
+    "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
     "mongoose": "^5.10.0",

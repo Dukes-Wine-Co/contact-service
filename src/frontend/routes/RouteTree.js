@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useParams } from 'react-router-dom';
 import Home from '../components/pages/Home';
 import EventAttendee from '../components/pages/EventAttendee';
 import Event from '../components/pages/Event';
 import Address from '../components/blocks/Address';
 import Person from '../components/pages/Person';
 import BulkSubmission from '../components/pages/BulkSubmission';
+import TableDisplay from '../components/blocks/TableDisplay';
 
-class RouteTree extends Component{
+class RouteTree extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
     render(){
         return(
             <div className="RouteTree">
@@ -27,6 +33,9 @@ class RouteTree extends Component{
                     </Route>
                     <Route path="/person" key='person'>
                         <Person title="Person"/>
+                    </Route>
+                    <Route path="/display/:displayItem" key='table-diplay'>
+                        <TableDisplay title="Table" location={location}/>
                     </Route>
                     <Route path="/" key='home'>
                         <Home title="Home"/>

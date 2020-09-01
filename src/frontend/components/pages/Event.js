@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader';
 import BaseComponent from '../static/BaseComponent';
 import FormSubmissionButton from '../static/FormSubmissionButton';
 import { addressFormArr, eventFormInfo } from '../../../data/submission-schemas';
-import { createFormComponent } from '../../../helpers/methods';
+import { createFormComponent } from '../../../helpers/component-helper-methods';
 import { Form } from 'react-bootstrap';
 
 class Event extends BaseComponent {

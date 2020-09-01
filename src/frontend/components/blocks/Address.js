@@ -1,6 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { createFormComponent } from '../../../helpers/methods';
+import { createFormComponent } from '../../../helpers/component-helper-methods';
 import { Form } from 'react-bootstrap';
 import BaseComponent from '../static/BaseComponent';
 import { addressFormArr } from '../../../data/submission-schemas';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import BaseComponent from '../static/BaseComponent';
-import { createFormComponent } from '../../../helpers/methods';
+import { createFormComponent } from '../../../helpers/component-helper-methods';
 import { personFormArr } from '../../../data/submission-schemas';
 import { Form } from 'react-bootstrap';
 import FormSubmissionButton from '../static/FormSubmissionButton';
