@@ -3,11 +3,8 @@ const processPopulationQueue = (dbCollection, populationQueue) => {
         return dbCollection;
     }
 
-    return populationQueue.reduce((promise, populateField) => {
-        return promise.then(() => {
-            return dbCollection.populate(populateField);
-        });
-    }, Promise.resolve());
+    return populationQueue.reduce((promise, populateField) => promise
+        .then(() => dbCollection.populate(populateField)), Promise.resolve());
 };
 
 const findCollection = async(req, options) => {

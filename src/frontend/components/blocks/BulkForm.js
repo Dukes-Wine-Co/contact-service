@@ -3,6 +3,13 @@ import { hot } from 'react-hot-loader';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import FormSubmissionButton from '../static/FormSubmissionButton';
+import { csvToObj } from '../../../helpers/csv-to-obj';
+
+const bulkSubmissionDataTypes = [
+    'Address',
+    'Event',
+    'Person'
+];
 
 class BulkForm extends Component {
     constructor(props) {
@@ -10,31 +17,42 @@ class BulkForm extends Component {
         this.state = {
             submissionType: 'Text',
             bulkValue: '',
-            submissionDataType: null
+            submissionDataType: null,
+            file: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.uploadCSV = this.uploadCSV.bind(this);
+    }
+
+    uploadCSV(e) {
+        e.preventDefault();
+        const reader = new FileReader();
+        const file = e.target.files[0];
+
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+                bulkValue: reader.result
+            });
+        };
+        reader.readAsText(file);
     }
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+        console.log('change', this.state);
     }
 
     handleSubmit(event) {
+        console.log('submit', this.state);
         event.preventDefault();
     }
 
     render() {
-        const bulkSubmissionDataTypes = [
-            'Address',
-            'Event',
-            'Event Attendee',
-            'Person'
-        ];
-
         const submissionOptions = bulkSubmissionDataTypes.map(type => {
-            return <option value={type} key={type}>{type}</option>;
+            return <option value={type} key={type} >{type}</option>;
         });
 
         const submissionTypes = ['File', 'Text'].map((type, ind) => {
@@ -43,7 +61,7 @@ class BulkForm extends Component {
                 key={type}
                 label={type}
                 name="submissionType"
-                id={'formHorizontalRadios' - ind}
+                id={'formHorizontalRadios-'+ind}
                 onChange={this.handleChange}
                 value={type}
             />;
@@ -56,7 +74,7 @@ class BulkForm extends Component {
         </Form.Group>;
 
         const fileInputElement = <Form.Group>
-            <Form.File id="exampleFormControlFile1" label="File input (supported file types: .csv)"/>
+            <Form.File id="exampleFormControlFile1" label="File input (supported file types: .csv)" name="bulkValue" onChange={this.uploadCSV}/>
         </Form.Group>;
 
         const submissionToRender = this.state.submissionType ?

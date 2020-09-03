@@ -12,7 +12,8 @@ const personFormArr = [
     { keyName: 'firstName', label: 'First Name' },
     { keyName: 'lastName', label: 'Last Name' },
     { keyName: 'phoneNumber', label: 'Phone Number', type: 'tel' },
-    { keyName: 'email', label: 'Email', type: 'email' }
+    { keyName: 'email', label: 'Email', type: 'email' },
+    { keyName: 'eventsAttended', label: 'Events Attended', data: usStates, type: 'select', multiple: true }
 ];
 
 const eventFormInfo = [

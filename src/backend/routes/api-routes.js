@@ -2,7 +2,7 @@ const express = require('express');
 const EventControls = require('../controllers/EventController');
 const PersonControls = require('../controllers/PersonController');
 const AddressControls = require('../controllers/AddressController');
-
+const BulkControls = require('../controllers/BulkController');
 
 module.exports = app => {
     const router = express.Router();
@@ -24,6 +24,5 @@ module.exports = app => {
     router.post('/person', PersonControls.create);
     router.get('/person/:id', PersonControls.find);
 
-    // router.post('/bulk/create', BulkControls.create);
-
+    router.post('/bulk', BulkControls.create);
 };

@@ -1,5 +1,5 @@
 class Address {
-    constructor(body){
+    constructor(body) {
         this.state = body.state;
         this.city = body.city;
         this.zipCode = body.zipCode;
@@ -7,7 +7,7 @@ class Address {
         this.addressLine2 = body.addressLine2;
     }
 
-    getBody(){
+    getBody() {
         return {
             state: this.state,
             city: this.city,
@@ -17,7 +17,7 @@ class Address {
         };
     }
 
-    toJSON(){
+    toJSON() {
         return JSON.stringify(this.getBody());
     }
 }

@@ -5,16 +5,19 @@ const Models = require('../config/mongo-config');
 
 const data = {
     address: {
-        class: Address,
-        model: Models.AddressModel
+        className: Address,
+        modelName: Models.AddressModel,
+        stringName: 'Address'
     },
     person: {
-        class: Person,
-        model: Models.PersonModel
+        className: Person,
+        modelName: Models.PersonModel,
+        stringName: 'Person'
     },
     event: {
-        class: Event,
-        model: Models.EventModel
+        className: Event,
+        modelName: Models.EventModel,
+        stringName: 'Event'
     }
 };
 

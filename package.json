@@ -10,8 +10,9 @@
   },
   "scripts": {
     "audit": "npm audit --audit-level=high --registry=https://registry.npmjs.org",
-    "dev": "npm run dev:server & (npm run dev:client && npm run dev:webpack-server) && fg",
+    "dev": "npm run dev:server & npm run dev:frontend && fg",
     "dev:client": "webpack --mode development",
+    "dev:frontend": "(npm run dev:client && npm run dev:webpack-server)",
     "dev:webpack-server": "webpack-dev-server --mode development",
     "dev:server": "source env.sh; NODE_ENV=development DEBUG=express:* nodemon src/backend/index.js",
     "lint": "eslint './*.js' './src/**/*.js' './test/**/*.js'",

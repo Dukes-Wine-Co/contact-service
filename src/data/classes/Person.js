@@ -1,5 +1,5 @@
 class Person {
-    constructor(body){
+    constructor(body) {
         this.firstName = body.firstName;
         this.lastName = body.lastName;
         this.eventsAttended = body.eventsAttended;
@@ -8,7 +8,7 @@ class Person {
         this.address = body.address;
     }
 
-    getBody(){
+    getBody() {
         return {
             firstName: this.firstName,
             lastName: this.lastName,
@@ -19,7 +19,7 @@ class Person {
         };
     }
 
-    toJSON(){
+    toJSON() {
         return JSON.stringify(this.getBody());
     }
 }

@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
-import { upperFirstChar, flattenObject, createUnionsOfArrays } from '../../../helpers/generic-helper-methods';
+import { createUnionsOfArrays, flattenObject, upperFirstChar } from '../../../helpers/generic-helper-methods';
 import axios from 'axios';
 import { API_URL } from '../../../config/app-config';
 import Table from 'react-bootstrap/Table';
 
-const getDisplayItem = pathName => pathName.replace('/display/', '');
-const TOTAL_PER_PAGE = 25;
+const getDisplayItemFromPath = pathName => pathName.replace('/display/', '');
 
 class TableDisplay extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            displayItem: getDisplayItem(this.props.location.pathname),
+            displayItem: getDisplayItemFromPath(this.props.location.pathname),
             displayData: []
         };
     }
@@ -51,7 +50,7 @@ class TableDisplay extends Component {
                                 <tr key={item._id}>
                                     {data.map(dataPair => <td key={`${item._id}-${dataPair}`}>{dataPair}</td>)}
                                 </tr>
-                                );
+                            );
                         })}
                         </tbody>
                     </Table>

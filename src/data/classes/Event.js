@@ -1,5 +1,5 @@
 class Event {
-    constructor(body){
+    constructor(body) {
         this.address = body.address;
         this.virtual = body.virtual;
         this.title = body.title;
@@ -10,7 +10,7 @@ class Event {
         this.eventAttendees = body.eventAttendees;
     }
 
-    getBody(){
+    getBody() {
         return {
             address: this.address,
             eventAttendees: this.eventAttendees,
@@ -23,7 +23,7 @@ class Event {
         };
     }
 
-    toJSON(){
+    toJSON() {
         return JSON.stringify(this.getBody());
     }
 }

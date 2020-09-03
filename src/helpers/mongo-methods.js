@@ -1,7 +1,7 @@
 const { logInfo, logError } = require('@dukes-wine/js-log-library');
 
-const mongoConnect = (mongooseInstance, mongoUrl) => {
-    return mongooseInstance.connect(mongoUrl, {
+const mongoConnect = (mongooseInstance, mongoUrl) =>
+    mongooseInstance.connect(mongoUrl, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
@@ -16,7 +16,6 @@ const mongoConnect = (mongooseInstance, mongoUrl) => {
             error: e
         });
     });
-};
 
 const configureMongoCollectionName = name => {
     switch (process.env.NODE_ENV) {
