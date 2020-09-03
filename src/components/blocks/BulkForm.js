@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import FormSubmissionButton from '../static/FormSubmissionButton';
-import { csvToObj } from '../../../helpers/csv-to-obj';
+import { csvToObj } from '../../helpers/csv-to-obj';
 
 const bulkSubmissionDataTypes = [
     'Address',

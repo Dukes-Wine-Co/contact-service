@@ -1,13 +1,13 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import BaseComponent from '../static/BaseComponent';
-import FormSubmissionButton from '../static/FormSubmissionButton';
-import { addressFormArr, eventFormInfo } from '../../../data/submission-schemas';
-import { createFormComponent } from '../../../helpers/component-helper-methods';
+import { createFormComponent } from '../../helpers/component-helper-methods';
 import { Form } from 'react-bootstrap';
+import { addressFormArr, personFormArr } from '../../data/submission-schemas';
+import FormSubmissionButton from '../static/FormSubmissionButton';
 import PageHeader from '../static/PageHeader';
 
-class Event extends BaseComponent {
+class Person extends BaseComponent {
     constructor(props) {
         super(props);
         this.state = {};
@@ -17,6 +17,7 @@ class Event extends BaseComponent {
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+        console.log(this.state);
     }
 
     handleSubmit(e) {
@@ -25,7 +26,7 @@ class Event extends BaseComponent {
 
     render() {
         const submissionTypes = [
-            { type: 'Event Info', data: eventFormInfo },
+            { type: 'Contact Info', data: personFormArr },
             { type: 'Address', data: addressFormArr }
         ];
 
@@ -40,7 +41,7 @@ class Event extends BaseComponent {
             });
 
         return (
-            <div className="Event">
+            <div className="Person">
                 <div className="headerKey">
                     <PageHeader title={this.props.title + 'Submission'} />
                 </div>
@@ -53,4 +54,4 @@ class Event extends BaseComponent {
     }
 }
 
-export default hot(module)(Event);
+export default hot(module)(Person);

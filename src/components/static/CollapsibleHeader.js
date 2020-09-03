@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import Nav from 'react-bootstrap/Nav';
-import { createDropdownGroup, createNavLink } from '../../../helpers/component-helper-methods';
-import { homeLink, requestLinks, submitLinks } from '../../../data/header-links';
+import { createDropdownGroup, createNavLink } from '../../helpers/component-helper-methods';
+import { homeLink, requestLinks, submitLinks } from '../../data/header-links';
 
 class CollapsibleHeader extends Component {
     render() {

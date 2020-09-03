@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
-import { createUnionsOfArrays, flattenObject, upperFirstChar } from '../../../helpers/generic-helper-methods';
+import { createUnionsOfArrays, flattenObject, upperFirstChar } from '../../helpers/generic-helper-methods';
 import axios from 'axios';
-import { API_URL } from '../../../config/app-config';
+import { API_URL } from '../../config/app-config';
 import DynamicTable from './DynamicTable';
 import PageHeader from '../static/PageHeader';
 import { textFilter } from 'react-bootstrap-table2-filter';

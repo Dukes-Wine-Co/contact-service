@@ -1,13 +1,13 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import BaseComponent from '../static/BaseComponent';
-import { createFormComponent } from '../../../helpers/component-helper-methods';
-import { personFormArr } from '../../../data/submission-schemas';
-import { Form } from 'react-bootstrap';
 import FormSubmissionButton from '../static/FormSubmissionButton';
+import { addressFormArr, eventFormInfo } from '../../data/submission-schemas';
+import { createFormComponent } from '../../helpers/component-helper-methods';
+import { Form } from 'react-bootstrap';
 import PageHeader from '../static/PageHeader';
 
-class EventAttendee extends BaseComponent {
+class Event extends BaseComponent {
     constructor(props) {
         super(props);
         this.state = {};
@@ -24,10 +24,23 @@ class EventAttendee extends BaseComponent {
     }
 
     render() {
-        const formComponent = createFormComponent(personFormArr, this.handleChange, this.state);
+        const submissionTypes = [
+            { type: 'Event Info', data: eventFormInfo },
+            { type: 'Address', data: addressFormArr }
+        ];
+
+        const formComponent = submissionTypes
+            .map(submissionType => {
+                return (
+                    <div>
+                        <h2>{submissionType.type}</h2>
+                        {createFormComponent(submissionType.data, this.handleChange, this.state)}
+                    </div>
+                );
+            });
 
         return (
-            <div className="EventAttendee">
+            <div className="Event">
                 <div className="headerKey">
                     <PageHeader title={this.props.title + 'Submission'} />
                 </div>
@@ -40,4 +53,4 @@ class EventAttendee extends BaseComponent {
     }
 }
 
-export default hot(module)(EventAttendee);
+export default hot(module)(Event);
