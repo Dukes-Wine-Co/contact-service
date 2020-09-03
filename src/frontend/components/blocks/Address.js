@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader';
 import { createFormComponent } from '../../../helpers/component-helper-methods';
 import BaseComponent from '../static/BaseComponent';
 import { addressFormArr } from '../../../data/submission-schemas';
+import PageHeader from '../static/PageHeader';
 
 class Address extends BaseComponent {
     constructor(props) {
@@ -15,6 +16,9 @@ class Address extends BaseComponent {
 
         return (
             <div className="Address">
+                <div className="headerKey">
+                    <PageHeader title={this.props.title + 'Submission'} />
+                </div>
                 {formComponent}
             </div>
         );

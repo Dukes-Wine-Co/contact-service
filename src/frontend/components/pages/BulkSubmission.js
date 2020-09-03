@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import BulkForm from '../blocks/BulkForm';
+import PageHeader from '../static/PageHeader';
 
 class BulkSubmission extends Component {
     render() {
         return (
             <div>
-                <h1>{this.props.title}</h1>
+                <div className="headerKey">
+                    <PageHeader title={this.props.title} />
+                </div>
                 <BulkForm/>
             </div>
         );

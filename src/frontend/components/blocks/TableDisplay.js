@@ -3,7 +3,9 @@ import { hot } from 'react-hot-loader';
 import { createUnionsOfArrays, flattenObject, upperFirstChar } from '../../../helpers/generic-helper-methods';
 import axios from 'axios';
 import { API_URL } from '../../../config/app-config';
-import Table from 'react-bootstrap/Table';
+import DynamicTable from './DynamicTable';
+import PageHeader from '../static/PageHeader';
+import { textFilter } from 'react-bootstrap-table2-filter';
 
 const getDisplayItemFromPath = pathName => pathName.replace('/display/', '');
 
@@ -28,32 +30,38 @@ class TableDisplay extends Component {
         const displayKeys = this.state.displayData.length
             ? createUnionsOfArrays(this.state.displayData
                 .map(dbObj => Object.keys(flattenObject(dbObj))))
+                .filter(key => {
+                    const keysToFilterOut = /(_id|__v)/g;
+                    return !key.match(keysToFilterOut);
+                })
             : null;
+
+        const columnInfo = displayKeys ? displayKeys.map(entry => {
+            return {
+                headerStyle: (colum, colIndex) => {
+                    return { width: '200px', textAlign: 'center' };
+                },
+                dataField: entry,
+                text: entry,
+                sort: true,
+                filter: textFilter()
+            };
+        }) : null;
 
         const tableHeaders = displayKeys ? displayKeys.slice()
             .map(header => <th key={header}>{header}</th>) : null;
 
+        const componentToDisplay = displayKeys
+            ? <DynamicTable data={this.state.displayData} columns={columnInfo}/>
+            : null;
+
         return (
             <div>
-                <h1>{upperFirstChar(this.state.displayItem)} Info</h1>
+                <div className="headerKey">
+                    <PageHeader title={upperFirstChar(this.state.displayItem) + 'Info'} />
+                </div>
                 <div>
-                    <Table striped bordered hover responsive>
-                        <thead>
-                        <tr>
-                            {tableHeaders}
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {this.state.displayData.map(item => {
-                            const data = displayKeys.map(key => item[key]);
-                            return (
-                                <tr key={item._id}>
-                                    {data.map(dataPair => <td key={`${item._id}-${dataPair}`}>{dataPair}</td>)}
-                                </tr>
-                            );
-                        })}
-                        </tbody>
-                    </Table>
+                    {componentToDisplay}
                 </div>
             </div>
 

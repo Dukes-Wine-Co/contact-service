@@ -28,7 +28,11 @@ const createFormComponent = (formArr, handleChangeMethod, state) =>
             : createFormElement(entry, handleChangeMethod, state));
 
 const createNavLink = entry => {
-    return <Nav.Link eventKey={entry.key} key={entry.key} href={entry.link}>{entry.name}</Nav.Link>;
+    return (
+        <Nav.Link eventKey={entry.key} key={entry.key} href={entry.link}>
+            {entry.name}
+        </Nav.Link>
+    );
 };
 
 const createDropdownLink = (entry, linkComponent) => {
@@ -40,7 +44,8 @@ const createDropdownLink = (entry, linkComponent) => {
 };
 
 const createDropdownGroup = (linkArr, title) => {
-    const dropdownGroup = linkArr.map(entry => createDropdownLink(entry, createNavLink(entry)));
+    const dropdownGroup = linkArr
+        .map(entry => createDropdownLink(entry, createNavLink(entry)));
 
     return <NavDropdown title={title} id={'nav-dropdown-'+title}>
         {dropdownGroup}

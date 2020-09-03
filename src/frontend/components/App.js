@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { hot, setConfig } from 'react-hot-loader';
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import RouteTree from '../routes/RouteTree';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Footer from './static/Footer';

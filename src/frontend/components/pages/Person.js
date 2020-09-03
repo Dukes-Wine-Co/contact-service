@@ -5,6 +5,7 @@ import { createFormComponent } from '../../../helpers/component-helper-methods';
 import { Form } from 'react-bootstrap';
 import { addressFormArr, personFormArr } from '../../../data/submission-schemas';
 import FormSubmissionButton from '../static/FormSubmissionButton';
+import PageHeader from '../static/PageHeader';
 
 class Person extends BaseComponent {
     constructor(props) {
@@ -16,6 +17,7 @@ class Person extends BaseComponent {
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+        console.log(this.state);
     }
 
     handleSubmit(e) {
@@ -40,7 +42,9 @@ class Person extends BaseComponent {
 
         return (
             <div className="Person">
-                <h1>{this.props.title} Submission</h1>
+                <div className="headerKey">
+                    <PageHeader title={this.props.title + 'Submission'} />
+                </div>
                 <Form onSubmit={this.handleSubmit}>
                     {formComponent}
                     <FormSubmissionButton/>

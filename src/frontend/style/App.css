@@ -29,3 +29,6 @@ h2 {
     /*display: block;*/
 }
 
+.react-bootstrap-table table {
+    table-layout: auto;
+}
