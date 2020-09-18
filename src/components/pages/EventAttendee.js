@@ -5,7 +5,6 @@ import { createFormComponent } from '../../helpers/component-helper-methods';
 import { personFormArr } from '../../data/submission-schemas';
 import { Form } from 'react-bootstrap';
 import FormSubmissionButton from '../static/FormSubmissionButton';
-import PageHeader from '../static/PageHeader';
 
 class EventAttendee extends BaseComponent {
     constructor(props) {
@@ -24,13 +23,11 @@ class EventAttendee extends BaseComponent {
     }
 
     render() {
-        const formComponent = createFormComponent(personFormArr, this.handleChange, this.state);
+        const dataObj = { formArr: personFormArr };
+        const formComponent = createFormComponent(dataObj, this.handleChange, this.state);
 
         return (
             <div className="EventAttendee">
-                <div className="headerKey">
-                    <PageHeader title={this.props.title + 'Submission'} />
-                </div>
                 <Form onSubmit={this.handleSubmit}>
                     {formComponent}
                     <FormSubmissionButton/>

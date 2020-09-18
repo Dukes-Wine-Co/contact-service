@@ -7,25 +7,45 @@ const createSelectElement = (entry, handleChangeMethod, state) => {
     const selectMap = entry.data.map(selectDatum => <option
         key={selectDatum.abbreviation}>{selectDatum.abbreviation}</option>);
 
-    return <Form.Group controlId={'addressForm-' + entry.keyName} key={entry.keyName}>
+    return <Form.Group
+        controlId={'addressForm-' + entry.keyName}
+        key={entry.keyName}
+        >
         <Form.Label>{entry.label}</Form.Label>
-        <Form.Control as="select" value={state[entry.keyName]} onChange={handleChangeMethod} name={entry.keyName} multiple={entry.multiple} >
+        <Form.Control
+            as="select"
+            value={state[entry.keyName]}
+            onChange={handleChangeMethod}
+            name={entry.keyName}
+            key={entry.keyName}
+            multiple={entry.multiple}>
             {selectMap}
         </Form.Control>
     </Form.Group>;
 };
 const createFormElement = (entry, handleChangeMethod, state) =>
-        <Form.Group controlId={'addressForm-' + entry.keyName} key={entry.keyName}>
+        <Form.Group
+            controlId={'addressForm-' + entry.keyName}
+            key={entry.keyName}>
             <Form.Label>{entry.label}</Form.Label>
-            <Form.Control required type={entry.type || 'text'} name={entry.keyName} placeholder={'Enter ' + entry.label}
-                          onChange={handleChangeMethod} value={state[entry.keyName]}/>
+            <Form.Control
+                required
+                type={entry.type || 'text'}
+                name={entry.keyName}
+                key={entry.keyName}
+                placeholder={'Enter ' + entry.label}
+                onChange={handleChangeMethod}
+                value={state[entry.keyName]}/>
         </Form.Group>;
 
-const createFormComponent = (formArr, handleChangeMethod, state) =>
-    formArr.map(entry =>
+const createFormComponent = (formData, handleChangeMethod, state) => {
+    return formData.map(entry =>
         entry.type === 'select'
             ? createSelectElement(entry, handleChangeMethod, state)
             : createFormElement(entry, handleChangeMethod, state));
+};
+
+
 
 const createNavLink = entry => {
     return (
@@ -47,7 +67,7 @@ const createDropdownGroup = (linkArr, title) => {
     const dropdownGroup = linkArr
         .map(entry => createDropdownLink(entry, createNavLink(entry)));
 
-    return <NavDropdown title={title} id={'nav-dropdown-'+title}>
+    return <NavDropdown title={title} id={'nav-dropdown-'+title} key={'nav-dropdown-'+title}>
         {dropdownGroup}
     </NavDropdown>;
 };

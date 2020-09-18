@@ -3,7 +3,8 @@ const apiUrl = process.env.PORT ? `http://localhost:${process.env.PORT}` : 'http
 
 const config = {
     mongoUrl,
-    API_URL: `${apiUrl}/api`
+    API_URL: `${apiUrl}/api`,
+    DWC_API_KEY: GLOBAL_DWC_API_KEY
 };
 
 module.exports = config;

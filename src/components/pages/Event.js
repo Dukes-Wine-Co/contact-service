@@ -6,11 +6,17 @@ import { addressFormArr, eventFormInfo } from '../../data/submission-schemas';
 import { createFormComponent } from '../../helpers/component-helper-methods';
 import { Form } from 'react-bootstrap';
 import PageHeader from '../static/PageHeader';
+import axios from 'axios';
+import { API_URL } from '../../config/app-config';
+import { flattenObject } from '../../helpers/generic-helper-methods';
+import { usStates } from '../../data/us-states';
 
 class Event extends BaseComponent {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            eventTitles: []
+        };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -41,9 +47,6 @@ class Event extends BaseComponent {
 
         return (
             <div className="Event">
-                <div className="headerKey">
-                    <PageHeader title={this.props.title + 'Submission'} />
-                </div>
                 <Form onSubmit={this.handleSubmit}>
                     {formComponent}
                     <FormSubmissionButton/>

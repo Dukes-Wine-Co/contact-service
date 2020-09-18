@@ -7,13 +7,13 @@ class PageHeader extends Component {
 
     render(){
         return (
-            <h3 style={{
+            <h1 style={{
                 borderRadius: '0.5em',
                 textAlign: 'center',
-                color: '#844592',
-                border: '2px solid #844592',
+                // color: '#844592',
+                // border: '2px solid #844592',
                 padding: '0.5em'
-            }}>{this.props.title}</h3>
+            }}>{this.props.title}</h1>
         );
     }
 }

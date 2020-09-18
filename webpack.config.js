@@ -33,6 +33,7 @@ module.exports = {
         compress: true
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({GLOBAL_DWC_API_KEY: JSON.stringify(process.env.DWC_API_KEY)})
     ]
 };

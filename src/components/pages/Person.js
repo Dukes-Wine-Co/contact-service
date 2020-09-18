@@ -5,19 +5,34 @@ import { createFormComponent } from '../../helpers/component-helper-methods';
 import { Form } from 'react-bootstrap';
 import { addressFormArr, personFormArr } from '../../data/submission-schemas';
 import FormSubmissionButton from '../static/FormSubmissionButton';
-import PageHeader from '../static/PageHeader';
+import axios from 'axios';
+import { API_URL } from '../../config/app-config';
+import { flattenObject } from '../../helpers/generic-helper-methods';
 
 class Person extends BaseComponent {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            eventTitles: []
+        };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount(){
+        axios.get(`${API_URL}/event`)
+            .then(info => {
+                const flattenEveryDBObj = info
+                    .data
+                    .map(dbObj => flattenObject(dbObj))
+                    .map(dbObj => ({ abbreviation: dbObj.title }));
+
+                this.setState({ eventTitles: flattenEveryDBObj });
+            });
+    }
+
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
-        console.log(this.state);
     }
 
     handleSubmit(e) {
@@ -25,8 +40,16 @@ class Person extends BaseComponent {
     }
 
     render() {
+        const asyncEntry = {
+            keyName: 'eventsAttended',
+            label: 'Events Attended',
+            data: this.state.eventTitles,
+            type: 'select',
+            multiple: true
+        };
+
         const submissionTypes = [
-            { type: 'Contact Info', data: personFormArr },
+            { type: 'Contact Info', data: [...personFormArr, ...[asyncEntry]] },
             { type: 'Address', data: addressFormArr }
         ];
 
@@ -42,9 +65,6 @@ class Person extends BaseComponent {
 
         return (
             <div className="Person">
-                <div className="headerKey">
-                    <PageHeader title={this.props.title + 'Submission'} />
-                </div>
                 <Form onSubmit={this.handleSubmit}>
                     {formComponent}
                     <FormSubmissionButton/>

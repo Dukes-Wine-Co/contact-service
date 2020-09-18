@@ -10,7 +10,7 @@
   },
   "scripts": {
     "audit": "npm audit --audit-level=high --registry=https://registry.npmjs.org",
-    "dev": "npm run dev:frontend",
+    "dev": "source env.sh; npm run dev:frontend",
     "dev:client": "webpack --mode development",
     "dev:frontend": "(npm run dev:client && npm run dev:webpack-server)",
     "dev:webpack-server": "webpack-dev-server --mode development",
@@ -46,6 +46,7 @@
     "popper.js": "^1.16.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
+    "react-bootstrap-multiselect": "^2.4.1",
     "react-bootstrap-table-next": "^4.0.3",
     "react-bootstrap-table2-filter": "^1.3.3",
     "react-bootstrap-table2-paginator": "^2.1.2",

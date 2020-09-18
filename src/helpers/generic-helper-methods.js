@@ -16,8 +16,23 @@ const createUnionsOfArrays = arr => {
     return [...new Set(combo)];
 };
 
+const getLastElementFromPattern = (string, symbol) => string.split(symbol).slice(-1)[0];
+
+const getDisplayItemFromPath = pathName => getLastElementFromPattern(pathName, '/');
+
+const parseKeyname = keyPath => getLastElementFromPattern(keyPath, '.');
+
+const formatTitleNames = inputString => inputString
+    .replace(/(submission)/g, '')
+    .split('-')
+    .map(word => upperFirstChar(word))
+    .join(' ');
+
 module.exports = {
     upperFirstChar,
     flattenObject,
-    createUnionsOfArrays
+    createUnionsOfArrays,
+    getDisplayItemFromPath,
+    parseKeyname,
+    formatTitleNames
 };
