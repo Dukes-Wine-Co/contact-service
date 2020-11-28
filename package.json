@@ -18,6 +18,7 @@
     "lint:fix": "eslint --fix './*.js' './src/**/*.js' './test/**/*.js'",
     "test": "npm run test:unit",
     "test:unit": "NODE_ENV=test mocha --recursive --timeout 10000 'test/unit/**/*.spec.js'",
+    "start:api-server": "docker-compose up",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
